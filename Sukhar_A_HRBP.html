@@ -265,19 +265,23 @@
 
         .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .achievement-card {
-            position: relative;
-            padding: 24px 20px;
+            padding: 24px;
             background: var(--bg-color);
             border-radius: 12px;
             border: 1px solid var(--border);
-            text-align: center;
-            cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .achievement-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .achievement-card:hover {
@@ -286,82 +290,64 @@
             background: #e8f0e9;
         }
 
+        .achievement-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
         .achievement-card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            display: block;
+            font-size: 2rem;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 12px;
+            flex-shrink: 0;
         }
 
         .achievement-card-title {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--accent-dark);
             line-height: 1.4;
         }
 
-        /* Tooltip */
-        .achievement-tooltip {
-            position: absolute;
-            bottom: calc(100% + 12px);
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: var(--text-primary);
-            color: white;
-            padding: 16px 20px;
-            border-radius: 12px;
-            min-width: 280px;
-            max-width: 350px;
-            font-size: 0.9rem;
+        .achievement-card-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             line-height: 1.6;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            pointer-events: none;
         }
 
-        .achievement-tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: var(--text-primary);
-        }
-
-        .achievement-card:hover .achievement-tooltip {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .tooltip-list {
+        .achievement-card-body ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .tooltip-list li {
-            padding: 6px 0 6px 16px;
+        .achievement-card-body li {
+            padding: 6px 0 6px 20px;
             position: relative;
             line-height: 1.5;
         }
 
-        .tooltip-list li::before {
+        .achievement-card-body li::before {
             content: "•";
             position: absolute;
-            left: 4px;
-            color: var(--accent-light);
+            left: 6px;
+            color: var(--accent);
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .tooltip-list li:last-child {
+        .achievement-card-body li:last-child {
             padding-bottom: 0;
         }
 
-        .tooltip-list li:first-child {
+        .achievement-card-body li:first-child {
             padding-top: 0;
         }
 
@@ -570,10 +556,12 @@
             <h2 class="section-title">Достижения</h2>
             <div class="achievements-grid">
                 <div class="achievement-card">
-                    <span class="achievement-card-icon">🏆</span>
-                    <h3 class="achievement-card-title">HR-решения</h3>
-                    <div class="achievement-tooltip">
-                        <ul class="tooltip-list">
+                    <div class="achievement-card-header">
+                        <span class="achievement-card-icon">🏆</span>
+                        <h3 class="achievement-card-title">HR-решения</h3>
+                    </div>
+                    <div class="achievement-card-body">
+                        <ul>
                             <li>Участие во всех HR-решениях компании</li>
                             <li>Изменения в структуре, адаптация и увольнения</li>
                         </ul>
@@ -581,10 +569,12 @@
                 </div>
 
                 <div class="achievement-card">
-                    <span class="achievement-card-icon">📊</span>
-                    <h3 class="achievement-card-title">Перфоманс-ревью</h3>
-                    <div class="achievement-tooltip">
-                        <ul class="tooltip-list">
+                    <div class="achievement-card-header">
+                        <span class="achievement-card-icon">📊</span>
+                        <h3 class="achievement-card-title">Перфоманс-ревью</h3>
+                    </div>
+                    <div class="achievement-card-body">
+                        <ul>
                             <li>Проведение практикумов по перфоманс-ревью</li>
                             <li>Акцент на развивающую обратную связь для руководителей</li>
                         </ul>
@@ -592,10 +582,12 @@
                 </div>
 
                 <div class="achievement-card">
-                    <span class="achievement-card-icon">💡</span>
-                    <h3 class="achievement-card-title">Вовлеченность</h3>
-                    <div class="achievement-tooltip">
-                        <ul class="tooltip-list">
+                    <div class="achievement-card-header">
+                        <span class="achievement-card-icon">💡</span>
+                        <h3 class="achievement-card-title">Вовлеченность</h3>
+                    </div>
+                    <div class="achievement-card-body">
+                        <ul>
                             <li>Повышение вовлеченности через фасилитации</li>
                             <li>Проработка зон дискомфорта в командах</li>
                         </ul>
@@ -603,10 +595,12 @@
                 </div>
 
                 <div class="achievement-card">
-                    <span class="achievement-card-icon">🎉</span>
-                    <h3 class="achievement-card-title">Мероприятия</h3>
-                    <div class="achievement-tooltip">
-                        <ul class="tooltip-list">
+                    <div class="achievement-card-header">
+                        <span class="achievement-card-icon">🎉</span>
+                        <h3 class="achievement-card-title">Мероприятия</h3>
+                    </div>
+                    <div class="achievement-card-body">
+                        <ul>
                             <li>Перезапуск корпоративных мероприятий</li>
                             <li>Ретро, корпоративная премия, выездные мероприятия</li>
                         </ul>
@@ -614,10 +608,12 @@
                 </div>
 
                 <div class="achievement-card">
-                    <span class="achievement-card-icon">🔄</span>
-                    <h3 class="achievement-card-title">Оптимизация HR</h3>
-                    <div class="achievement-tooltip">
-                        <ul class="tooltip-list">
+                    <div class="achievement-card-header">
+                        <span class="achievement-card-icon">🔄</span>
+                        <h3 class="achievement-card-title">Оптимизация HR</h3>
+                    </div>
+                    <div class="achievement-card-body">
+                        <ul>
                             <li>Ревизия процесса адаптации сотрудников</li>
                             <li>Оптимизация HR-процессов</li>
                         </ul>
@@ -759,6 +755,22 @@
 
         document.querySelectorAll('.about-card').forEach(card => {
             aboutObserver.observe(card);
+        });
+
+        // Анимация для карточек достижений
+        const achievementObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    achievementObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            achievementObserver.observe(card);
         });
     </script>
 </body>
