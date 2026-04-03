@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анастасия Сухар | HR Business Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #faf9f7;
+            --bg-gradient: linear-gradient(135deg, #faf9f7 0%, #f0ebe5 100%);
+            --card-bg: #ffffff;
+            --text-primary: #2d2a26;
+            --text-secondary: #6b665f;
+            --accent: #8ba88e;
+            --accent-light: #a8bfaa;
+            --accent-dark: #5d7a60;
+            --border: #e8e4de;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin: 0 auto 24px;
+            display: block;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .header .role {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: var(--accent-dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent-dark);
+        }
+
+        /* Greeting */
+        .greeting {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 32px;
+        }
+
+        /* About blocks */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .about-card h3 {
+            font-size: 1rem;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .about-card .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            color: var(--text-secondary);
+        }
+
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .service-item:hover {
+            background: #e8f0e9;
+        }
+
+        .service-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .service-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Scope */
+        .scope-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scope-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .scope-item:first-child {
+            padding-top: 0;
+        }
+
+        /* Contacts */
+        .contacts {
+            background: var(--text-primary);
+            color: white;
+            border: none;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        .contact-icon {
+            font-size: 1.25rem;
+        }
+
+        /* List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: var(--accent-dark);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Process */
+        .process {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .process .section-title {
+            color: var(--accent-dark);
+        }
+
+        .process-number {
+            background: var(--accent);
+            color: white;
+        }
+
+        .process-note {
+            border-top-color: var(--border);
+        }
+
+        .process-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-list li {
+            padding: 12px 0;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            color: var(--text-secondary);
+        }
+
+        .process-number {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .process-note {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .header {
+            opacity: 0;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            .section {
+                padding: 24px 20px;
+                border-radius: 12px;
+            }
+
+            .header {
+                margin-bottom: 32px;
+            }
+
+            .greeting {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <header class="header">
+            <img src="1 (96 из 141).jpg" alt="Анастасия Сухар" class="header-photo">
+            <h1>Анастасия Сухар</h1>
+            <p class="role">Бизнес-партнёр по персоналу</p>
+        </header>
+
+        <!-- Обо мне -->
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>📋 Что я делаю</h3>
+                <p>Сопровождаю полный цикл работы с персоналом: от онбординга до exit-интервью.</p>
+            </div>
+            <div class="about-card">
+                <h3>⚡ Как я работаю</h3>
+                <p>Работаю по запросу — без массовых рассылок и плановых часов с календарём.</p>
+            </div>
+            <div class="about-card">
+                <h3>🤝 Мой подход</h3>
+                <p>Помогаю руководителям снимать HR-риски и решать конфликты. С сотрудниками — адаптироваться и развиваться.</p>
+            </div>
+            <div class="about-card">
+                <h3>📬 Мои контакты</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>+7 916 648-19-70 (Telegram, Max, звонки)</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>Anastasiya.Zaytseva2@rt.ru</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Я курирую -->
+        <section class="section">
+            <h2 class="section-title">Я курирую</h2>
+            <div class="scope-item">
+                Блока по развитию информационных систем ПАО «Ростелеком»: Центр разработки и развития систем поддержки бизнеса
+            </div>
+            <div class="scope-item">
+                РТК ИТ Плюс
+            </div>
+        </section>
+
+        <!-- С чем ко мне можно -->
+        <section class="section">
+            <h2 class="section-title">Направления работы</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="service-icon">📊</span>
+                    <span class="service-text">Оценка и развитие: грейды, 1-1, 360 градусов</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🚀</span>
+                    <span class="service-text">Адаптация новичков: первые 30-90 дней</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">⚖️</span>
+                    <span class="service-text">Конфликты в команде, в т.ч. межкультурные</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🚪</span>
+                    <span class="service-text">Увольнение</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🎁</span>
+                    <span class="service-text">Льготы и мотивация: как что-то получить</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">📚</span>
+                    <span class="service-text">Организация обучения</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как это работает -->
+        <section class="section process">
+            <h2 class="section-title">Как это работает</h2>
+            <ol class="process-list">
+                <li>
+                    <span class="process-number">1</span>
+                    <span>Пишете в Telegram / Max</span>
+                </li>
+                <li>
+                    <span class="process-number">2</span>
+                    <span>Договариваемся о встрече онлайн (или обсуждаем в чате)</span>
+                </li>
+                <li>
+                    <span class="process-number">3</span>
+                    <span>Я даю план действий в течение 1-2 дней</span>
+                </li>
+            </ol>
+            <p class="process-note">Никаких плановых встреч «для галочки».</p>
+        </section>
+    </div>
+
+    <script>
+        // Анимация появления карточек при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Анимация для about-карточек
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.about-card').forEach(card => {
+            aboutObserver.observe(card);
+        });
+    </script>
+</body>
+</html>

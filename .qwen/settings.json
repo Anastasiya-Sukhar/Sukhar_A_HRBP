@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(github.com)",
+      "Bash(git init)",
+      "Bash(git remote *)",
+      "Bash(\"c:\\program files\\git\\bin\\git.exe\" *)",
+      "Bash(cmd *)",
+      "Bash(\"c:\\program files\\git\\cmd\\git.exe\" *)",
+      "Bash(powershell *)"
+    ]
+  },
+  "$version": 3
+}
