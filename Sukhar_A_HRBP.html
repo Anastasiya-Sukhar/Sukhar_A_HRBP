@@ -164,6 +164,13 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-card h3::before {
+            font-size: 1.4rem;
         }
 
         .about-card p {
@@ -322,6 +329,14 @@
 
         .contact-icon {
             font-size: 1.25rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(139, 168, 142, 0.25);
         }
 
         /* Achievements */
@@ -362,6 +377,28 @@
             font-size: 2.5rem;
             margin-bottom: 12px;
             display: block;
+            width: 64px;
+            height: 64px;
+            line-height: 64px;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(139, 168, 142, 0.3);
+        }
+
+        .service-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+            width: 64px;
+            height: 64px;
+            line-height: 64px;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(139, 168, 142, 0.3);
         }
 
         .achievement-card-title {
@@ -499,17 +536,18 @@
         }
 
         .process-number {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
             color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(139, 168, 142, 0.25);
         }
 
         .process-note {
