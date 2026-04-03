@@ -222,8 +222,8 @@
             bottom: calc(100% + 12px);
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: var(--text-primary);
-            color: white;
+            background: var(--card-bg);
+            color: var(--text-secondary);
             padding: 16px 20px;
             border-radius: 12px;
             min-width: 280px;
@@ -234,7 +234,8 @@
             visibility: hidden;
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
             z-index: 100;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border: 1px solid var(--border);
             pointer-events: none;
         }
 
@@ -245,7 +246,7 @@
             left: 50%;
             transform: translateX(-50%);
             border: 8px solid transparent;
-            border-top-color: var(--text-primary);
+            border-top-color: var(--card-bg);
         }
 
         .service-card:hover .service-tooltip {
@@ -270,7 +271,7 @@
             content: "•";
             position: absolute;
             left: 4px;
-            color: var(--accent-light);
+            color: var(--accent);
             font-weight: bold;
         }
 
