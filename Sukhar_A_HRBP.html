@@ -30,9 +30,43 @@
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
+        /* Clover background */
+        .clover-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.08;
+        }
+
+        .clover {
+            position: absolute;
+            font-size: 4rem;
+            color: var(--accent);
+            transform: rotate(var(--rotation));
+        }
+
+        .clover:nth-child(1) { top: 5%; left: 3%; --rotation: 15deg; font-size: 3rem; }
+        .clover:nth-child(2) { top: 15%; right: 8%; --rotation: -20deg; font-size: 5rem; }
+        .clover:nth-child(3) { top: 30%; left: 5%; --rotation: 45deg; font-size: 4rem; }
+        .clover:nth-child(4) { top: 45%; right: 4%; --rotation: -10deg; font-size: 6rem; }
+        .clover:nth-child(5) { top: 60%; left: 7%; --rotation: 30deg; font-size: 3.5rem; }
+        .clover:nth-child(6) { top: 75%; right: 6%; --rotation: -35deg; font-size: 4.5rem; }
+        .clover:nth-child(7) { top: 85%; left: 4%; --rotation: 20deg; font-size: 5rem; }
+        .clover:nth-child(8) { top: 20%; left: 50%; --rotation: -15deg; font-size: 3rem; }
+        .clover:nth-child(9) { top: 50%; left: 45%; --rotation: 40deg; font-size: 4rem; }
+        .clover:nth-child(10) { top: 90%; left: 50%; --rotation: -25deg; font-size: 3.5rem; }
+
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 720px;
             margin: 0 auto;
             padding: 60px 20px;
@@ -471,6 +505,20 @@
     </style>
 </head>
 <body>
+    <!-- Clover background -->
+    <div class="clover-bg">
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+        <div class="clover">🍀</div>
+    </div>
+
     <div class="container">
         <!-- Заголовок -->
         <header class="header">
@@ -520,28 +568,62 @@
         <!-- Достижения -->
         <section class="section achievements">
             <h2 class="section-title">Достижения</h2>
-            <ul class="achievement-list">
-                <li class="achievement-item">
-                    <span class="achievement-icon">🏆</span>
-                    <span class="achievement-text">Участие во всех HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">📊</span>
-                    <span class="achievement-text">Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">💡</span>
-                    <span class="achievement-text">Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">🎉</span>
-                    <span class="achievement-text">Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">🔄</span>
-                    <span class="achievement-text">Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</span>
-                </li>
-            </ul>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🏆</span>
+                    <h3 class="achievement-card-title">HR-решения</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Участие во всех HR-решениях компании</li>
+                            <li>Изменения в структуре, адаптация и увольнения</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">📊</span>
+                    <h3 class="achievement-card-title">Перфоманс-ревью</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Проведение практикумов по перфоманс-ревью</li>
+                            <li>Акцент на развивающую обратную связь для руководителей</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">💡</span>
+                    <h3 class="achievement-card-title">Вовлеченность</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Повышение вовлеченности через фасилитации</li>
+                            <li>Проработка зон дискомфорта в командах</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🎉</span>
+                    <h3 class="achievement-card-title">Мероприятия</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Перезапуск корпоративных мероприятий</li>
+                            <li>Ретро, корпоративная премия, выездные мероприятия</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🔄</span>
+                    <h3 class="achievement-card-title">Оптимизация HR</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Ревизия процесса адаптации сотрудников</li>
+                            <li>Оптимизация HR-процессов</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- С чем ко мне можно -->
