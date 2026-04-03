@@ -335,56 +335,91 @@
             color: var(--accent-dark);
         }
 
-        .achievement-list {
-            list-style: none;
-            padding: 0;
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
         }
 
-        .achievement-item {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            color: var(--text-secondary);
-            transition: background 0.2s;
-        }
-
-        .achievement-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .achievement-item:first-child {
-            padding-top: 0;
-        }
-
-        .achievement-item:hover {
+        .achievement-card {
+            position: relative;
+            padding: 24px 20px;
             background: var(--bg-color);
-            border-radius: 8px;
-            padding-left: 12px;
-            padding-right: 12px;
-            margin-left: -12px;
-            margin-right: -12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
 
-        .achievement-icon {
-            font-size: 1.75rem;
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
-            border-radius: 50%;
-            color: white;
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            background: #e8f0e9;
         }
 
-        .achievement-text {
-            flex: 1;
+        .achievement-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .achievement-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            line-height: 1.4;
+        }
+
+        /* Achievement Tooltip */
+        .achievement-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            padding: 16px 20px;
+            border-radius: 12px;
+            min-width: 280px;
+            max-width: 350px;
+            font-size: 0.9rem;
             line-height: 1.6;
-            font-size: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+
+        .achievement-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--card-bg);
+        }
+
+        .achievement-card:hover .achievement-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .tooltip-text {
+            margin: 0;
+            line-height: 1.5;
         }
 
         /* List */
@@ -603,28 +638,52 @@
         <!-- Достижения -->
         <section class="section achievements">
             <h2 class="section-title">Достижения</h2>
-            <ul class="achievement-list">
-                <li class="achievement-item">
-                    <span class="achievement-icon">🏆</span>
-                    <span class="achievement-text">Участие в HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">📊</span>
-                    <span class="achievement-text">Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">💡</span>
-                    <span class="achievement-text">Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">🎉</span>
-                    <span class="achievement-text">Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</span>
-                </li>
-                <li class="achievement-item">
-                    <span class="achievement-icon">🔄</span>
-                    <span class="achievement-text">Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</span>
-                </li>
-            </ul>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🏆</span>
+                    <h3 class="achievement-card-title">HR-решения</h3>
+                    <div class="achievement-tooltip">
+                        <p class="tooltip-title">Участие в HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</p>
+                        <p class="tooltip-text">Выступаю как стратегический партнер в принятии ключевых HR-решений: от изменений в структуре компании до адаптации новых сотрудников и сложных увольнений. Мой подход помогает минимизировать риски и сохранить доверие сотрудников.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">📊</span>
+                    <h3 class="achievement-card-title">Перфоманс-ревью</h3>
+                    <div class="achievement-tooltip">
+                        <p class="tooltip-title">Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</p>
+                        <p class="tooltip-text">Провожу практикумы для руководителей, обучая их не просто заполнять формы, а давать обратную связь, которая мотивирует сотрудников на развитие. Это повышает эффективность команд и улучшает климат в коллективе.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">💡</span>
+                    <h3 class="achievement-card-title">Вовлеченность</h3>
+                    <div class="achievement-tooltip">
+                        <p class="tooltip-title">Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</p>
+                        <p class="tooltip-text">Мои фасилитации помогают командам выявить и устранить зоны дискомфорта, что приводит к повышению вовлеченности и укреплению доверия между коллегами.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🎉</span>
+                    <h3 class="achievement-card-title">Мероприятия</h3>
+                    <div class="achievement-tooltip">
+                        <p class="tooltip-title">Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</p>
+                        <p class="tooltip-text">Перезапустила подход к корпоративным мероприятиям, сделав их не только интересными, но и полезными для бизнеса. Ретро, корпоративная премия и выездные мероприятия теперь помогают укрепить командный дух и мотивировать сотрудников.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🔄</span>
+                    <h3 class="achievement-card-title">Оптимизация HR</h3>
+                    <div class="achievement-tooltip">
+                        <p class="tooltip-title">Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</p>
+                        <p class="tooltip-text">Провела ревизию процесса адаптации, усилив обратную связь от руководителей и внедрив новые опросники. Также был разработан бот для автоматизации рассылок, который помогает новичкам быстрее погружаться в рабочий процесс. Эти изменения позволили ускорить адаптацию сотрудников и повысить их удовлетворенность работой.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- С чем ко мне можно -->
