@@ -229,78 +229,106 @@
             color: var(--accent-dark);
         }
 
-        .achievement-category {
-            margin-bottom: 28px;
-            padding: 20px;
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .achievement-card {
+            position: relative;
+            padding: 24px 20px;
             background: var(--bg-color);
             border-radius: 12px;
             border: 1px solid var(--border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
 
-        .achievement-category:last-child {
-            margin-bottom: 0;
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            background: #e8f0e9;
         }
 
-        .achievement-category:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        .achievement-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .category-icon {
-            font-size: 1.75rem;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
-            border-radius: 12px;
-            flex-shrink: 0;
-        }
-
-        .category-title {
-            font-size: 1.1rem;
+        .achievement-card-title {
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--accent-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            line-height: 1.4;
         }
 
-        .category-list {
+        /* Tooltip */
+        .achievement-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--text-primary);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            min-width: 280px;
+            max-width: 350px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .achievement-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--text-primary);
+        }
+
+        .achievement-card:hover .achievement-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tooltip-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .category-list li {
-            padding: 8px 0 8px 24px;
+        .tooltip-list li {
+            padding: 6px 0 6px 16px;
             position: relative;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .category-list li::before {
+        .tooltip-list li::before {
             content: "•";
             position: absolute;
-            left: 8px;
-            color: var(--accent);
+            left: 4px;
+            color: var(--accent-light);
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        .category-list li:last-child {
+        .tooltip-list li:last-child {
             padding-bottom: 0;
+        }
+
+        .tooltip-list li:first-child {
+            padding-top: 0;
         }
 
         /* List */
@@ -493,85 +521,88 @@
         <section class="section achievements">
             <h2 class="section-title">Достижения</h2>
             
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">🎯</span>
-                    <h3 class="category-title">Стратегическое HR-партнерство</h3>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🎯</span>
+                    <h3 class="achievement-card-title">Стратегическое HR-партнерство</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Выстраивание партнерских отношений с руководителями подразделений</li>
+                            <li>Консультирование по HR-вопросам: политики, компенсации, льготы</li>
+                            <li>Участие в HR-проектах и изменениях оргструктуры</li>
+                            <li>Решение вопросов отсрочки от мобилизации</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Выстраивание партнерских отношений с руководителями подразделений</li>
-                    <li>Консультирование руководителей и сотрудников по HR-вопросам, включая политики, компенсации, льготы и кадровое администрирование</li>
-                    <li>Участие в HR-проектах, изменениях организационной структуры и внутренних/внешних переводах</li>
-                    <li>Решение вопросов отсрочки от мобилизации для сотрудников</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">🔄</span>
-                    <h3 class="category-title">Управление изменениями</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🔄</span>
+                    <h3 class="achievement-card-title">Управление изменениями</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Полный цикл изменений оргструктуры: отрисовка, согласование, переводы</li>
+                            <li>Фасилитации для снижения тревожности сотрудников</li>
+                            <li>Улучшение взаимодействия в управленческой команде</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Курирование полного цикла изменений организационной структуры, включая отрисовку, согласование и переводы команд</li>
-                    <li>Проведение фасилитаций для снижения тревожности сотрудников и улучшения взаимодействия в управленческой команде</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">⚡</span>
-                    <h3 class="category-title">Оптимизация процессов</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">⚡</span>
+                    <h3 class="achievement-card-title">Оптимизация процессов</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Автоматизация онбординга и адаптации новых сотрудников</li>
+                            <li>Проведение и обработка опросов 360° и eNPS</li>
+                            <li>Взаимодействие с HR-подразделением для улучшения процессов</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Автоматизация процессов онбординга и адаптации новых сотрудников</li>
-                    <li>Проведение и обработка опросов 360° и eNPS для оценки вовлеченности</li>
-                    <li>Взаимодействие с HR-подразделением для улучшения процессов и повышения эффективности</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">👥</span>
-                    <h3 class="category-title">Подбор персонала</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">👥</span>
+                    <h3 class="achievement-card-title">Подбор персонала</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Ведение 15–20 вакансий одновременно (Java, BI, ETL, Oracle, Linux и др.)</li>
+                            <li>Первичная оценка кандидатов и собеседования с заказчиками</li>
+                            <li>Контроль выходов и адаптации на испытательном сроке</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Ведение 15–20 вакансий одновременно, включая поиск специалистов в области IT (Java, BI, ETL, Oracle, Linux, тестирование, технический писатель и др.), а также руководителей проектов и администраторов</li>
-                    <li>Первичная оценка кандидатов и участие в собеседованиях с заказчиками</li>
-                    <li>Контроль выходов кандидатов на работу и их адаптации на испытательном сроке</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">📚</span>
-                    <h3 class="category-title">Обучение и развитие</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">📚</span>
+                    <h3 class="achievement-card-title">Обучение и развитие</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Контроль внутренних и внешних обучений сотрудников</li>
+                            <li>Обучение руководителей по перфоманс-ревью и обратной связи</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Контроль внутренних и внешних обучений сотрудников</li>
-                    <li>Организация и проведение обучения для руководителей по вопросам перфоманс-ревью и обратной связи</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">💰</span>
-                    <h3 class="category-title">Управление компенсациями и бюджетом</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">💰</span>
+                    <h3 class="achievement-card-title">Компенсации и бюджет</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Расчет изменений заработной платы и выплат премий</li>
+                            <li>Ведение бюджета по найму и управление новыми ставками</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Расчет изменений заработной платы и решение вопросов по выплате премий</li>
-                    <li>Ведение бюджета по найму сотрудников и управление новыми ставками</li>
-                </ul>
-            </div>
 
-            <div class="achievement-category">
-                <div class="category-header">
-                    <span class="category-icon">🎉</span>
-                    <h3 class="category-title">Корпоративная культура и мероприятия</h3>
+                <div class="achievement-card">
+                    <span class="achievement-card-icon">🎉</span>
+                    <h3 class="achievement-card-title">Корпоративная культура</h3>
+                    <div class="achievement-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Организация мероприятий: Ретро, премии, выездные</li>
+                            <li>Проведение welcome-дней внутри ЦК</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="category-list">
-                    <li>Организация и проведение корпоративных мероприятий, включая Ретро, премии и выездные мероприятия</li>
-                    <li>Помощь в проведении welcome-дней внутри ЦК</li>
-                </ul>
             </div>
         </section>
 
