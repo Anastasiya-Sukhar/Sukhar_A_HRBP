@@ -218,6 +218,68 @@
             font-size: 1.25rem;
         }
 
+        /* Achievements */
+        .achievements {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .achievements .section-title {
+            color: var(--accent-dark);
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            color: var(--text-secondary);
+            transition: background 0.2s;
+        }
+
+        .achievement-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .achievement-item:first-child {
+            padding-top: 0;
+        }
+
+        .achievement-item:hover {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 50%;
+            color: white;
+        }
+
+        .achievement-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+
         /* List */
         .feature-list {
             list-style: none;
@@ -405,23 +467,28 @@
         </section>
 
         <!-- Достижения -->
-        <section class="section">
+        <section class="section achievements">
             <h2 class="section-title">Достижения</h2>
-            <ul class="feature-list">
-                <li>
-                    <span>Участие во всех HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</span>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <span class="achievement-icon">🏆</span>
+                    <span class="achievement-text">Участие во всех HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</span>
                 </li>
-                <li>
-                    <span>Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</span>
+                <li class="achievement-item">
+                    <span class="achievement-icon">📊</span>
+                    <span class="achievement-text">Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</span>
                 </li>
-                <li>
-                    <span>Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</span>
+                <li class="achievement-item">
+                    <span class="achievement-icon">💡</span>
+                    <span class="achievement-text">Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</span>
                 </li>
-                <li>
-                    <span>Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</span>
+                <li class="achievement-item">
+                    <span class="achievement-icon">🎉</span>
+                    <span class="achievement-text">Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</span>
                 </li>
-                <li>
-                    <span>Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</span>
+                <li class="achievement-item">
+                    <span class="achievement-icon">🔄</span>
+                    <span class="achievement-text">Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</span>
                 </li>
             </ul>
         </section>
