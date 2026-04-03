@@ -442,11 +442,24 @@
         }
 
         .process-list li {
-            padding: 12px 0;
+            padding: 16px 0;
             display: flex;
             gap: 16px;
             align-items: flex-start;
             color: var(--text-secondary);
+        }
+
+        .process-list li strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .process-step-text {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .process-number {
@@ -695,18 +708,26 @@
             <ol class="process-list">
                 <li>
                     <span class="process-number">1</span>
-                    <span>Пишете в Telegram / Max</span>
+                    <div>
+                        <strong>Свяжитесь со мной</strong>
+                        <p class="process-step-text">Напишите в Max или на почту, чтобы обсудить ваш запрос.</p>
+                    </div>
                 </li>
                 <li>
                     <span class="process-number">2</span>
-                    <span>Договариваемся о встрече онлайн (или обсуждаем в чате)</span>
+                    <div>
+                        <strong>Обсудим детали</strong>
+                        <p class="process-step-text">Договоримся о встрече онлайн или обсудим все в чате.</p>
+                    </div>
                 </li>
                 <li>
                     <span class="process-number">3</span>
-                    <span>Я даю план действий в течение 1-2 дней</span>
+                    <div>
+                        <strong>Получите план действий</strong>
+                        <p class="process-step-text">В течение 1–2 дней я подготовлю четкий план решения вашей задачи.</p>
+                    </div>
                 </li>
             </ol>
-            <p class="process-note">Никаких плановых встреч «для галочки».</p>
         </section>
     </div>
 
