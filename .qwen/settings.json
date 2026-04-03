@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"c:\\users\\anastasiya.zaytseva\\appdata\\local\\githubdesktop\\app-3.5.7\\resources\\app\\git\\cmd\\git.exe\" *)"
+    ]
+  },
+  "$version": 3
+}
