@@ -263,92 +263,56 @@
             color: var(--accent-dark);
         }
 
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        .achievement-list {
+            list-style: none;
+            padding: 0;
         }
 
-        .achievement-card {
-            padding: 24px;
-            background: var(--bg-color);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .achievement-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            background: #e8f0e9;
-        }
-
-        .achievement-card-header {
+        .achievement-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
             display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 20px;
+            align-items: flex-start;
+            color: var(--text-secondary);
+            transition: background 0.2s;
         }
 
-        .achievement-card-icon {
-            font-size: 2rem;
-            width: 56px;
-            height: 56px;
+        .achievement-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .achievement-item:first-child {
+            padding-top: 0;
+        }
+
+        .achievement-item:hover {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+
+        .achievement-icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--accent-light), var(--accent));
-            border-radius: 12px;
-            flex-shrink: 0;
+            border-radius: 50%;
+            color: white;
         }
 
-        .achievement-card-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--accent-dark);
-            line-height: 1.4;
-        }
-
-        .achievement-card-body {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .achievement-text {
+            flex: 1;
             line-height: 1.6;
-        }
-
-        .achievement-card-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .achievement-card-body li {
-            padding: 6px 0 6px 20px;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .achievement-card-body li::before {
-            content: "•";
-            position: absolute;
-            left: 6px;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .achievement-card-body li:last-child {
-            padding-bottom: 0;
-        }
-
-        .achievement-card-body li:first-child {
-            padding-top: 0;
+            font-size: 1rem;
         }
 
         /* List */
@@ -554,72 +518,28 @@
         <!-- Достижения -->
         <section class="section achievements">
             <h2 class="section-title">Достижения</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-card-header">
-                        <span class="achievement-card-icon">🏆</span>
-                        <h3 class="achievement-card-title">HR-решения</h3>
-                    </div>
-                    <div class="achievement-card-body">
-                        <ul>
-                            <li>Участие во всех HR-решениях компании</li>
-                            <li>Изменения в структуре, адаптация и увольнения</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-card-header">
-                        <span class="achievement-card-icon">📊</span>
-                        <h3 class="achievement-card-title">Перфоманс-ревью</h3>
-                    </div>
-                    <div class="achievement-card-body">
-                        <ul>
-                            <li>Проведение практикумов по перфоманс-ревью</li>
-                            <li>Акцент на развивающую обратную связь для руководителей</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-card-header">
-                        <span class="achievement-card-icon">💡</span>
-                        <h3 class="achievement-card-title">Вовлеченность</h3>
-                    </div>
-                    <div class="achievement-card-body">
-                        <ul>
-                            <li>Повышение вовлеченности через фасилитации</li>
-                            <li>Проработка зон дискомфорта в командах</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-card-header">
-                        <span class="achievement-card-icon">🎉</span>
-                        <h3 class="achievement-card-title">Мероприятия</h3>
-                    </div>
-                    <div class="achievement-card-body">
-                        <ul>
-                            <li>Перезапуск корпоративных мероприятий</li>
-                            <li>Ретро, корпоративная премия, выездные мероприятия</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-card-header">
-                        <span class="achievement-card-icon">🔄</span>
-                        <h3 class="achievement-card-title">Оптимизация HR</h3>
-                    </div>
-                    <div class="achievement-card-body">
-                        <ul>
-                            <li>Ревизия процесса адаптации сотрудников</li>
-                            <li>Оптимизация HR-процессов</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <span class="achievement-icon">🏆</span>
+                    <span class="achievement-text">Участие во всех HR-решениях компании, включая изменения в структуре, адаптацию и увольнения.</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">📊</span>
+                    <span class="achievement-text">Проведение практикумов по перфоманс-ревью с акцентом на развивающую обратную связь для руководителей.</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">💡</span>
+                    <span class="achievement-text">Повышение вовлеченности сотрудников через фасилитации и проработку зон дискомфорта в командах.</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">🎉</span>
+                    <span class="achievement-text">Перезапуск корпоративных мероприятий: Ретро, корпоративная премия, выездные мероприятия.</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-icon">🔄</span>
+                    <span class="achievement-text">Ревизия процесса адаптации сотрудников и оптимизация HR-процессов.</span>
+                </li>
+            </ul>
         </section>
 
         <!-- С чем ко мне можно -->
@@ -710,22 +630,6 @@
 
         document.querySelectorAll('.about-card').forEach(card => {
             aboutObserver.observe(card);
-        });
-
-        // Анимация для карточек достижений
-        const achievementObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    achievementObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.achievement-card').forEach(card => {
-            achievementObserver.observe(card);
         });
     </script>
 </body>
