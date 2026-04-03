@@ -182,33 +182,104 @@
         /* Services grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
         }
 
-        .service-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 16px;
+        .service-card {
+            position: relative;
+            padding: 24px 20px;
             background: var(--bg-color);
-            border-radius: 8px;
-            transition: background 0.2s;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
 
-        .service-item:hover {
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             background: #e8f0e9;
         }
 
-        .service-icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
+        .service-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .service-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .service-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            line-height: 1.4;
+        }
+
+        /* Service Tooltip */
+        .service-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--text-primary);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            min-width: 280px;
+            max-width: 350px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .service-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--text-primary);
+        }
+
+        .service-card:hover .service-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tooltip-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tooltip-list li {
+            padding: 6px 0 6px 16px;
+            position: relative;
             line-height: 1.5;
+        }
+
+        .tooltip-list li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: var(--accent-light);
+            font-weight: bold;
+        }
+
+        .tooltip-list li:last-child {
+            padding-bottom: 0;
+        }
+
+        .tooltip-list li:first-child {
+            padding-top: 0;
         }
 
         /* Scope */
@@ -546,29 +617,74 @@
         <section class="section">
             <h2 class="section-title">Направления работы</h2>
             <div class="services-grid">
-                <div class="service-item">
-                    <span class="service-icon">📊</span>
-                    <span class="service-text">Оценка и развитие: грейды, 1-1, 360 градусов</span>
+                <div class="service-card">
+                    <span class="service-card-icon">🎯</span>
+                    <h3 class="service-card-title">Стратегическое HR-партнерство</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Выстраивание партнерских отношений с руководителями подразделений</li>
+                            <li>Консультирование по HR-вопросам: политики, компенсации, льготы, кадровое администрирование</li>
+                            <li>Участие в HR-проектах, изменениях организационной структуры и внутренних/внешних переводах</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-icon">🚀</span>
-                    <span class="service-text">Адаптация новичков: первые 30-90 дней</span>
+
+                <div class="service-card">
+                    <span class="service-card-icon">🔄</span>
+                    <h3 class="service-card-title">Управление изменениями</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Полный цикл изменений оргструктуры: отрисовка, согласование, переводы команд</li>
+                            <li>Фасилитации для снижения тревожности и улучшения взаимодействия в управленческой команде</li>
+                            <li>Решение конфликтов в командах, в том числе межкультурных</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-icon">⚖️</span>
-                    <span class="service-text">Конфликты в команде, в т.ч. межкультурные</span>
+
+                <div class="service-card">
+                    <span class="service-card-icon">⚡</span>
+                    <h3 class="service-card-title">Оптимизация процессов</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Автоматизация онбординга и адаптации, внедрение бота для рассылок</li>
+                            <li>Взаимодействие с HR-подразделением для улучшения процессов и повышения эффективности</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-icon">🚪</span>
-                    <span class="service-text">Увольнение</span>
+
+                <div class="service-card">
+                    <span class="service-card-icon">📚</span>
+                    <h3 class="service-card-title">Обучение, оценка и развитие</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Контроль внутренних и внешних обучений сотрудников</li>
+                            <li>Обучение руководителей по перфоманс-ревью и обратной связи</li>
+                            <li>Проведение оценок 360 градусов и индивидуальных встреч 1-1</li>
+                            <li>Грейдирование сотрудников</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-icon">🎁</span>
-                    <span class="service-text">Льготы и мотивация: как что-то получить</span>
+
+                <div class="service-card">
+                    <span class="service-card-icon">💰</span>
+                    <h3 class="service-card-title">Компенсации и бюджет</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Расчет изменений заработной платы и решение вопросов по выплате премий</li>
+                            <li>Ведение бюджета по найму и управление новыми ставками</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-icon">📚</span>
-                    <span class="service-text">Организация обучения</span>
+
+                <div class="service-card">
+                    <span class="service-card-icon">🎉</span>
+                    <h3 class="service-card-title">Корпоративная культура</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Организация мероприятий: Ретро, премии, выездные мероприятия</li>
+                            <li>Проведение welcome-дней внутри ЦК</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
