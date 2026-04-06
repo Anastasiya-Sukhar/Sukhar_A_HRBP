@@ -297,7 +297,8 @@
             border-top-color: var(--card-bg);
         }
 
-        .service-card:hover .service-tooltip {
+        .service-card:hover .service-tooltip,
+        .service-card.touch-active .service-tooltip {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
@@ -640,48 +641,40 @@
                 padding: 28px 20px;
             }
 
-            /* Fix tooltip overlap on mobile */
+            /* Services on mobile */
             .services-section {
-                padding-top: 24px;
+                padding-top: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
             .service-card {
-                margin-bottom: 12px;
+                padding: 20px 12px;
+            }
+
+            .service-card-icon {
+                width: 56px;
+                height: 56px;
+                line-height: 56px;
+                font-size: 2rem;
+                border-radius: 14px;
+            }
+
+            .service-card-title {
+                font-size: 0.75rem;
             }
 
             .service-tooltip {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                transform: none;
-                min-width: auto;
-                max-width: none;
-                margin-top: 10px;
-                margin-bottom: 8px;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                min-width: 220px;
+                max-width: 280px;
                 font-size: 0.8rem;
-                padding: 10px 14px;
-                border: none;
-                background: rgba(139, 168, 142, 0.08);
-                border-radius: 8px;
-            }
-
-            .service-tooltip::after {
-                display: none;
-            }
-
-            .service-card:hover {
-                transform: none;
-            }
-
-            .service-card:hover .service-card-icon {
-                transform: none;
+                padding: 12px 16px;
             }
 
             .tooltip-list li {
-                padding: 4px 0 4px 14px;
                 font-size: 0.78rem;
             }
 
@@ -952,6 +945,26 @@
 
         document.querySelectorAll('.about-card').forEach(card => {
             aboutObserver.observe(card);
+        });
+
+        // Touch support for service cards on mobile
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const activeCard = document.querySelector('.service-card.touch-active');
+                if (activeCard && activeCard !== this) {
+                    activeCard.classList.remove('touch-active');
+                }
+                this.classList.toggle('touch-active');
+            });
+        });
+
+        // Close tooltip when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.service-card')) {
+                document.querySelectorAll('.service-card.touch-active').forEach(card => {
+                    card.classList.remove('touch-active');
+                });
+            }
         });
     </script>
 </body>
