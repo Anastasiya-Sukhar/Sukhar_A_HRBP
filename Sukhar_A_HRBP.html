@@ -641,8 +641,12 @@
             }
 
             /* Fix tooltip overlap on mobile */
+            .services-section {
+                padding-top: 24px;
+            }
+
             .service-card {
-                margin-bottom: 16px;
+                margin-bottom: 12px;
             }
 
             .service-tooltip {
@@ -652,12 +656,16 @@
                 transform: none;
                 min-width: auto;
                 max-width: none;
-                margin-top: 12px;
+                margin-top: 10px;
+                margin-bottom: 8px;
                 opacity: 1;
                 visibility: visible;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                font-size: 0.85rem;
-                padding: 12px 16px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                font-size: 0.8rem;
+                padding: 10px 14px;
+                border: none;
+                background: rgba(139, 168, 142, 0.08);
+                border-radius: 8px;
             }
 
             .service-tooltip::after {
@@ -670,6 +678,11 @@
 
             .service-card:hover .service-card-icon {
                 transform: none;
+            }
+
+            .tooltip-list li {
+                padding: 4px 0 4px 14px;
+                font-size: 0.78rem;
             }
 
             /* Fix achievement icons overlap */
