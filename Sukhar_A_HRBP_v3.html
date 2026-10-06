@@ -754,6 +754,23 @@
             gap: 16px;
         }
 
+        .process-card--lead {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            column-gap: 26px;
+            padding: 30px 32px;
+            background:
+                linear-gradient(120deg, rgba(109, 185, 140, 0.14), rgba(207, 169, 107, 0.09)),
+                linear-gradient(160deg, var(--glass-strong), var(--glass));
+        }
+
+        .process-card--lead .step {
+            margin-bottom: 0;
+            font-size: 2.7rem;
+        }
+
         .process-card {
             position: relative;
             overflow: hidden;
@@ -1263,10 +1280,12 @@
                 <span class="rule"></span>
             </div>
             <div class="process-grid">
-                <div class="process-card">
+                <div class="process-card process-card--lead">
                     <span class="step">1.</span>
-                    <strong>Напишите мне</strong>
-                    <p>В Max или на почту — как вам удобнее.</p>
+                    <div class="lead-text">
+                        <strong>Свяжитесь со мной</strong>
+                        <p>Напишите в Max или на почту, чтобы обсудить ваш запрос.</p>
+                    </div>
                 </div>
                 <div class="process-card">
                     <span class="step">2.</span>
@@ -1284,7 +1303,7 @@
         <!-- Контакты -->
         <section class="section reveal" id="contact" style="border-top: none; padding-top: 24px;">
             <div class="contact-panel">
-                <p class="eyebrow">Свяжитесь со мной</p>
+                <p class="eyebrow">Контакты</p>
                 <h2>Обсудим ваш запрос</h2>
                 <p>Отвечу в течение рабочего дня — по почте или в Max.</p>
                 <div class="contact-actions">
