@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анастасия Сухар | HR Business Partner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0c1310;
+            --bg-soft: #101a15;
+            --cream: #f0e9da;
+            --muted: #a9b3a6;
+            --emerald: #6db98c;
+            --emerald-deep: #3f7d5a;
+            --brass: #cfa96b;
+            --glass: rgba(255, 255, 255, 0.045);
+            --glass-strong: rgba(255, 255, 255, 0.07);
+            --hairline: rgba(240, 233, 218, 0.12);
+            --hairline-soft: rgba(240, 233, 218, 0.07);
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--cream);
+            line-height: 1.65;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--emerald-deep);
+            color: var(--cream);
+        }
+
+        /* ---------- Ambient background: glow orbs ---------- */
+        .bg-scene {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+        }
+
+        .orb-emerald {
+            width: 46rem;
+            height: 46rem;
+            top: -18rem;
+            right: -14rem;
+            background: radial-gradient(circle, rgba(109, 185, 140, 0.22), transparent 65%);
+            animation: drift 26s ease-in-out infinite alternate;
+        }
+
+        .orb-brass {
+            width: 38rem;
+            height: 38rem;
+            bottom: -16rem;
+            left: -12rem;
+            background: radial-gradient(circle, rgba(207, 169, 107, 0.14), transparent 65%);
+            animation: drift 32s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(-4rem, 3rem) scale(1.12); }
+        }
+
+        /* ---------- Nav ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(12, 19, 16, 0.72);
+            backdrop-filter: blur(14px) saturate(1.3);
+            -webkit-backdrop-filter: blur(14px) saturate(1.3);
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.08rem;
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .nav-logo em {
+            font-style: italic;
+            color: var(--emerald);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 7px 12px;
+            border-radius: 999px;
+            transition: color 0.25s ease, background 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cream);
+            background: var(--glass-strong);
+        }
+
+        /* ---------- Layout ---------- */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 76px 24px 80px;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr auto;
+            gap: 64px;
+            align-items: center;
+            padding-bottom: 76px;
+        }
+
+        .eyebrow {
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--brass);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--brass));
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: clamp(2.8rem, 6.5vw, 4.3rem);
+            line-height: 1.06;
+            letter-spacing: -0.01em;
+            margin-bottom: 22px;
+            text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            background: linear-gradient(100deg, var(--emerald) 20%, var(--brass) 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero-lede {
+            font-size: 1.06rem;
+            color: var(--muted);
+            max-width: 33rem;
+            margin-bottom: 34px;
+        }
+
+        .hero-lede strong {
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .hero-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        button.pill {
+            cursor: pointer;
+            font-family: var(--sans);
+        }
+
+        .pill-glow {
+            background: linear-gradient(120deg, var(--emerald-deep), #2e6347);
+            color: var(--cream);
+            border: 1px solid rgba(109, 185, 140, 0.4);
+            box-shadow: 0 8px 26px rgba(63, 125, 90, 0.35);
+        }
+
+        .pill-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(109, 185, 140, 0.45);
+        }
+
+        .pill-glass {
+            background: var(--glass);
+            border: 1px solid var(--hairline);
+            color: var(--cream);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .pill-glass:hover {
+            transform: translateY(-2px);
+            border-color: rgba(109, 185, 140, 0.5);
+            background: var(--glass-strong);
+        }
+
+        /* ---------- Photo with rotating conic ring ---------- */
+        .photo-stage {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        .photo-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                var(--emerald), var(--brass), #4c8f6b, var(--emerald-deep), var(--emerald));
+            animation: spin 14s linear infinite;
+            filter: drop-shadow(0 0 26px rgba(109, 185, 140, 0.35));
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .photo-mask {
+            position: absolute;
+            inset: 7px;
+            border-radius: 50%;
+            background: var(--bg);
+        }
+
+        .hero-photo {
+            position: absolute;
+            inset: 13px;
+            width: calc(100% - 26px);
+            height: calc(100% - 26px);
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .photo-chip {
+            position: absolute;
+            bottom: 6px;
+            left: -28px;
+            background: rgba(16, 26, 21, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--hairline);
+            border-radius: 999px;
+            padding: 9px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cream);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            white-space: nowrap;
+        }
+
+        .photo-chip .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--emerald);
+            box-shadow: 0 0 10px var(--emerald);
+        }
+
+        .photo-caption {
+            position: absolute;
+            top: -14px;
+            right: -20px;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 2.6rem;
+            opacity: 0.16;
+            pointer-events: none;
+        }
+
+        /* ---------- Section scaffolding ---------- */
+        .section {
+            scroll-margin-top: 84px;
+            padding: 58px 0;
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 18px;
+            margin-bottom: 38px;
+        }
+
+        .section-head .num {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--brass);
+            font-size: 1.1rem;
+        }
+
+        .section-head h2 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: clamp(1.7rem, 4vw, 2.3rem);
+            letter-spacing: -0.01em;
+        }
+
+        .section-head .rule {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--hairline), transparent);
+            align-self: center;
+        }
+
+        /* ---------- About: glass cards ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            counter-reset: aboutcard;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--hairline-soft);
+            border-radius: 18px;
+            padding: 26px 24px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 rgba(240, 233, 218, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(109, 185, 140, 0.4);
+            background: var(--glass-strong);
+            box-shadow: inset 0 1px 0 rgba(240, 233, 218, 0.07), 0 18px 44px rgba(0, 0, 0, 0.35), 0 0 34px rgba(109, 185, 140, 0.08);
+        }
+
+        .glass-card::before {
+            counter-increment: aboutcard;
+            content: counter(aboutcard, decimal-leading-zero);
+            position: absolute;
+            top: 20px;
+            right: 22px;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--brass);
+            opacity: 0.5;
+        }
+
+        /* Градиентная рамка при наведении */
+        .glass-card::after,
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(109, 185, 140, 0.65), rgba(207, 169, 107, 0.45));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .glass-card:hover::after,
+        .service-card:hover::after,
+        .service-card.touch-active::after {
+            opacity: 1;
+        }
+
+        .glass-card .icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, rgba(109, 185, 140, 0.18), rgba(207, 169, 107, 0.14));
+            border: 1px solid var(--hairline-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover .icon {
+            border-color: rgba(109, 185, 140, 0.4);
+            box-shadow: 0 0 20px rgba(109, 185, 140, 0.25);
+        }
+
+        .glass-card h3 {
+            font-family: var(--serif);
+            font-size: 1.14rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .contact-mini a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            word-break: break-all;
+        }
+
+        .contact-mini a:hover {
+            color: var(--emerald);
+        }
+
+        /* ---------- Scope ---------- */
+        .scope-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 14px 22px;
+            align-items: baseline;
+            padding: 24px 26px;
+            border-radius: 18px;
+            background: var(--glass);
+            border: 1px solid var(--hairline-soft);
+            margin-bottom: 14px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .scope-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .scope-item:hover {
+            border-color: rgba(207, 169, 107, 0.4);
+        }
+
+        .scope-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            bottom: 18px;
+            width: 3px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--emerald), var(--brass));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .scope-item:hover::before {
+            opacity: 1;
+        }
+
+        .scope-marker {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        .scope-item strong {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.18rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .scope-item span {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        /* ---------- Achievements: glowing timeline ---------- */
+        .timeline {
+            list-style: none;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 14px;
+            bottom: 14px;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--hairline) 12%, var(--hairline) 88%, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 24px;
+            padding-bottom: 38px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-soft);
+            border: 1px solid var(--hairline);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            border-color: rgba(109, 185, 140, 0.6);
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4), 0 0 26px rgba(109, 185, 140, 0.25);
+        }
+
+        .timeline-item strong {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.16rem;
+            line-height: 1.35;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item .idx {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--brass);
+            margin-right: 8px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 40rem;
+        }
+
+        /* ---------- Services ---------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--glass);
+            border: 1px solid var(--hairline-soft);
+            border-radius: 18px;
+            padding: 26px 22px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 rgba(240, 233, 218, 0.05);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+
+        .service-card:hover,
+        .service-card.touch-active {
+            transform: translateY(-6px);
+            border-color: rgba(109, 185, 140, 0.5);
+            background: var(--glass-strong);
+            box-shadow: inset 0 1px 0 rgba(240, 233, 218, 0.07), 0 20px 46px rgba(0, 0, 0, 0.4), 0 0 34px rgba(109, 185, 140, 0.1);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(109, 185, 140, 0.2), rgba(207, 169, 107, 0.12));
+            border: 1px solid var(--hairline-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .service-card:hover .service-icon,
+        .service-card.touch-active .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 22px rgba(109, 185, 140, 0.3);
+        }
+
+        .service-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.03rem;
+            line-height: 1.3;
+        }
+
+        .service-tooltip {
+            position: absolute;
+            bottom: calc(100% + 14px);
+            left: 20px;
+            right: 20px;
+            background: #16241c;
+            border: 1px solid rgba(109, 185, 140, 0.25);
+            color: var(--muted);
+            padding: 16px 18px;
+            border-radius: 14px;
+            font-size: 0.84rem;
+            line-height: 1.55;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+            pointer-events: none;
+        }
+
+        .service-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 34px;
+            border: 7px solid transparent;
+            border-top-color: #16241c;
+        }
+
+        .service-card:hover .service-tooltip,
+        .service-card.touch-active .service-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .tooltip-list {
+            list-style: none;
+        }
+
+        .tooltip-list li {
+            padding: 5px 0 5px 16px;
+            position: relative;
+        }
+
+        .tooltip-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--brass);
+        }
+
+        .tooltip-list li:first-child { padding-top: 0; }
+        .tooltip-list li:last-child { padding-bottom: 0; }
+
+        .services-note {
+            margin-top: 24px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* ---------- Wow-эффекты карточек: свет за курсором + 3D-наклон ---------- */
+        .about-grid,
+        .services-grid,
+        .process-grid {
+            perspective: 1000px;
+        }
+
+        .spot {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(16rem circle at var(--mx, 50%) var(--my, 50%),
+                rgba(109, 185, 140, 0.14), transparent 65%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .glass-card:hover .spot,
+        .service-card:hover .spot,
+        .service-card.touch-active .spot,
+        .process-card:hover .spot,
+        .scope-item:hover .spot {
+            opacity: 1;
+        }
+
+        /* Плавный, но отзывчивый наклон (только для устройств с мышью) */
+        .tilt-live {
+            transition: transform 0.16s ease-out, box-shadow 0.3s ease,
+                border-color 0.3s ease, background 0.3s ease;
+        }
+
+        /* ---------- Process ---------- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .process-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--glass-strong), var(--glass));
+            border: 1px solid var(--hairline-soft);
+            border-radius: 18px;
+            padding: 28px 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(207, 169, 107, 0.45);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Блик, пробегающий по карточке при наведении */
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -70%;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-18deg);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+
+        .process-card:hover::before {
+            left: 135%;
+        }
+
+        .process-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(207, 169, 107, 0.6), rgba(109, 185, 140, 0.5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .process-card:hover::after {
+            opacity: 1;
+        }
+
+        .process-card .step {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 2.3rem;
+            line-height: 1;
+            margin-bottom: 14px;
+            display: block;
+            background: linear-gradient(120deg, var(--brass), var(--emerald));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .process-card strong {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .process-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        /* ---------- Contact: glowing panel ---------- */
+        .contact-panel {
+            position: relative;
+            border-radius: 26px;
+            padding: 64px 48px;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(30rem 20rem at 80% -20%, rgba(109, 185, 140, 0.2), transparent 60%),
+                radial-gradient(26rem 18rem at 10% 120%, rgba(207, 169, 107, 0.14), transparent 60%),
+                linear-gradient(160deg, #14241b, #0d1712);
+            border: 1px solid rgba(109, 185, 140, 0.22);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(109, 185, 140, 0.07);
+        }
+
+        .contact-panel::before {
+            content: '🍀';
+            position: absolute;
+            right: -34px;
+            bottom: -48px;
+            font-size: 13rem;
+            opacity: 0.07;
+            transform: rotate(18deg);
+            pointer-events: none;
+        }
+
+        .contact-panel .eyebrow {
+            color: var(--brass);
+            justify-content: center;
+        }
+
+        .contact-panel .eyebrow::before {
+            display: none;
+        }
+
+        .contact-panel h2 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            margin-bottom: 14px;
+        }
+
+        .contact-panel > p {
+            color: var(--muted);
+            max-width: 32rem;
+            margin: 0 auto 34px;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-cream {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: var(--cream);
+            color: #14241b;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-cream:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(240, 233, 218, 0.25);
+        }
+
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            border: 1px solid rgba(240, 233, 218, 0.3);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            background: transparent;
+            cursor: pointer;
+            font-family: var(--sans);
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .btn-glass:hover {
+            background: rgba(240, 233, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 32px 24px 48px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* ---------- Toast ---------- */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%) translateY(16px);
+            background: #16241c;
+            border: 1px solid rgba(109, 185, 140, 0.35);
+            color: var(--cream);
+            padding: 14px 22px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+            max-width: min(90vw, 440px);
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ---------- Animations ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            opacity: 0;
+            animation: rise 0.9s ease-out forwards;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(26px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .hero { opacity: 1; transform: none; animation: none; transition: none; }
+            .photo-ring, .orb { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 780px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 52px;
+                padding-bottom: 48px;
+                text-align: center;
+            }
+
+            .hero-lede { margin-left: auto; margin-right: auto; }
+            .hero-pills { justify-content: center; }
+            .eyebrow { justify-content: center; }
+            .eyebrow::before { display: none; }
+
+            .photo-stage {
+                margin: 0 auto;
+                width: 270px;
+                height: 270px;
+            }
+
+            .photo-chip { left: 50%; transform: translateX(-50%); bottom: -12px; }
+
+            .container { padding: 48px 20px 60px; }
+
+            .section { padding: 44px 0; }
+
+            .section-head { flex-wrap: wrap; gap: 10px; }
+            .section-head .rule { display: none; }
+
+            .timeline::before { left: 19px; }
+            .timeline-item { grid-template-columns: 40px 1fr; gap: 16px; }
+            .timeline-dot { width: 40px; height: 40px; font-size: 1.05rem; }
+
+            .contact-panel { padding: 48px 24px; }
+
+            .nav-inner { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient background -->
+    <div class="bg-scene" aria-hidden="true">
+        <div class="orb orb-emerald"></div>
+        <div class="orb orb-brass"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#top" class="nav-logo">Анастасия <em>Сухар</em></a>
+            <div class="nav-links">
+                <a href="#about">Обо мне</a>
+                <a href="#scope">Курирую</a>
+                <a href="#achievements">Достижения</a>
+                <a href="#services">Направления</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="top">
+        <!-- Hero -->
+        <header class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">HR Business Partner · РТК ИТ</p>
+                <h1>Анастасия <em>Сухар</em></h1>
+                <p class="hero-lede">
+                    Помогаю руководителям <strong>снимать HR-риски</strong> и решать конфликты,
+                    а сотрудникам — адаптироваться и развиваться.
+                    Сопровождаю полный цикл работы с персоналом: от онбординга до exit-интервью.
+                </p>
+                <div class="hero-pills">
+                    <a class="pill pill-glow" href="mailto:Anastasiya.Zaytseva2@rt.ru">📧 Написать на почту</a>
+                    <a class="pill pill-glass" href="tel:+79166481970">📞 +7 916 648-19-70</a>
+                    <a class="pill pill-glass" href="https://max.ru/u/f9LHodD0cOLRjIM3LQtgwOl5oye13zvUnSHDrBCBGdh8maUzY6DyMWRFV_g" target="_blank" rel="noopener">💬 Написать в Max</a>
+                </div>
+            </div>
+
+            <div class="photo-stage">
+                <span class="photo-caption" aria-hidden="true">🍀</span>
+                <div class="photo-ring" aria-hidden="true"></div>
+                <div class="photo-mask" aria-hidden="true"></div>
+                <img src="1 (96 из 141).jpg" alt="Анастасия Сухар" class="hero-photo">
+                <div class="photo-chip"><span class="dot"></span> Работаю по запросу</div>
+            </div>
+        </header>
+
+        <!-- Обо мне -->
+        <section class="section reveal" id="about">
+            <div class="section-head">
+                <span class="num">01</span>
+                <h2>Обо мне</h2>
+                <span class="rule"></span>
+            </div>
+            <div class="about-grid">
+                <div class="glass-card">
+                    <span class="icon">🤝</span>
+                    <h3>Мой подход</h3>
+                    <p>Помогаю руководителям снимать HR-риски и решать конфликты. С сотрудниками — адаптироваться и развиваться.</p>
+                </div>
+                <div class="glass-card">
+                    <span class="icon">📋</span>
+                    <h3>Что я делаю</h3>
+                    <p>Сопровождаю полный цикл работы с персоналом: от онбординга до exit-интервью.</p>
+                </div>
+                <div class="glass-card">
+                    <span class="icon">⚡</span>
+                    <h3>Как я работаю</h3>
+                    <p>Работаю по запросу — без массовых рассылок и плановых часов с календарём.</p>
+                </div>
+                <div class="glass-card contact-mini">
+                    <span class="icon">📬</span>
+                    <h3>Контакты</h3>
+                    <a href="tel:+79166481970">📞 +7 916 648-19-70</a>
+                    <a href="mailto:Anastasiya.Zaytseva2@rt.ru">📧 Anastasiya.Zaytseva2@rt.ru</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Я курирую -->
+        <section class="section reveal" id="scope">
+            <div class="section-head">
+                <span class="num">02</span>
+                <h2>Я курирую</h2>
+                <span class="rule"></span>
+            </div>
+            <div class="scope-item">
+                <span class="scope-marker">🍀</span>
+                <div>
+                    <strong>РТК ИТ — Блок по развитию информационных систем ПАО «Ростелеком»</strong>
+                    <span>Центр разработки и развития систем поддержки бизнеса</span>
+                </div>
+            </div>
+            <div class="scope-item">
+                <span class="scope-marker">🍀</span>
+                <div>
+                    <strong>РТК ИТ Плюс</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Достижения -->
+        <section class="section reveal" id="achievements">
+            <div class="section-head">
+                <span class="num">03</span>
+                <h2>Достижения</h2>
+                <span class="rule"></span>
+            </div>
+            <ol class="timeline">
+                <li class="timeline-item">
+                    <span class="timeline-dot">🏆</span>
+                    <div>
+                        <strong><span class="idx">01</span>Участие в HR-решениях компании, включая изменения в структуре, адаптацию и увольнения</strong>
+                        <p>Выступаю как стратегический партнёр в принятии ключевых HR-решений: от изменений в структуре компании до адаптации новых сотрудников и сложных увольнений. Мой подход помогает минимизировать риски и сохранить доверие сотрудников.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="timeline-dot">📊</span>
+                    <div>
+                        <strong><span class="idx">02</span>Практикумы по перфоманс-ревью с акцентом на развивающую обратную связь</strong>
+                        <p>Провожу практикумы для руководителей, обучая их не просто заполнять формы, а давать обратную связь, которая мотивирует сотрудников на развитие. Это повышает эффективность команд и улучшает климат в коллективе.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="timeline-dot">💡</span>
+                    <div>
+                        <strong><span class="idx">03</span>Повышение вовлечённости через фасилитации и проработку зон дискомфорта</strong>
+                        <p>Мои фасилитации помогают командам выявить и устранить зоны дискомфорта, что приводит к повышению вовлечённости и укреплению доверия между коллегами.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="timeline-dot">🎉</span>
+                    <div>
+                        <strong><span class="idx">04</span>Перезапуск корпоративных мероприятий: Ретро, премия, выезды</strong>
+                        <p>Перезапустила подход к корпоративным мероприятиям, сделав их не только интересными, но и полезными для бизнеса. Ретро, корпоративная премия и выездные мероприятия теперь помогают укрепить командный дух и мотивировать сотрудников.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="timeline-dot">🔄</span>
+                    <div>
+                        <strong><span class="idx">05</span>Ревизия процесса адаптации и оптимизация HR-процессов</strong>
+                        <p>Провела ревизию процесса адаптации, усилив обратную связь от руководителей и внедрив новые опросники. Также был разработан бот для автоматизации рассылок, который помогает новичкам быстрее погружаться в рабочий процесс. Эти изменения позволили ускорить адаптацию сотрудников и повысить их удовлетворённость работой.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Направления -->
+        <section class="section reveal" id="services">
+            <div class="section-head">
+                <span class="num">04</span>
+                <h2>Направления работы</h2>
+                <span class="rule"></span>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🎯</span>
+                    <h3 class="service-title">Стратегическое HR-партнёрство</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Выстраивание партнёрских отношений с руководителями подразделений</li>
+                            <li>Консультирование по HR-вопросам: политики, компенсации, льготы, кадровое администрирование</li>
+                            <li>Участие в HR-проектах, изменениях оргструктуры и переводах</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🔄</span>
+                    <h3 class="service-title">Управление изменениями</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Полный цикл изменений оргструктуры: отрисовка, согласование, переводы команд</li>
+                            <li>Фасилитации для снижения тревожности и улучшения взаимодействия в управленческой команде</li>
+                            <li>Решение конфликтов в командах, в том числе межкультурных</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3 class="service-title">Оптимизация процессов</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Автоматизация онбординга и адаптации, внедрение бота для рассылок</li>
+                            <li>Взаимодействие с HR-подразделением для улучшения процессов и повышения эффективности</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📚</span>
+                    <h3 class="service-title">Обучение, оценка и развитие</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Контроль внутренних и внешних обучений сотрудников</li>
+                            <li>Обучение руководителей по перфоманс-ревью и обратной связи</li>
+                            <li>Проведение оценок 360 градусов и индивидуальных встреч 1-1</li>
+                            <li>Грейдирование сотрудников</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💰</span>
+                    <h3 class="service-title">Компенсации и бюджет</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Расчёт изменений заработной платы и решение вопросов по выплате премий</li>
+                            <li>Ведение бюджета по найму и управление новыми ставками</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🎉</span>
+                    <h3 class="service-title">Корпоративная культура</h3>
+                    <div class="service-tooltip">
+                        <ul class="tooltip-list">
+                            <li>Организация мероприятий: Ретро, премии, выездные мероприятия</li>
+                            <li>Проведение welcome-дней внутри ЦК</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="services-note">Наведите курсор на карточку — раскроются подробности.</p>
+        </section>
+
+        <!-- Как это работает -->
+        <section class="section reveal" id="process">
+            <div class="section-head">
+                <span class="num">05</span>
+                <h2>Как это работает</h2>
+                <span class="rule"></span>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <span class="step">1.</span>
+                    <strong>Свяжитесь со мной</strong>
+                    <p>Напишите в Max или на почту, чтобы обсудить ваш запрос.</p>
+                </div>
+                <div class="process-card">
+                    <span class="step">2.</span>
+                    <strong>Обсудим детали</strong>
+                    <p>Договоримся о встрече онлайн или обсудим всё в чате.</p>
+                </div>
+                <div class="process-card">
+                    <span class="step">3.</span>
+                    <strong>Получите план действий</strong>
+                    <p>В течение 1–2 дней я подготовлю чёткий план решения вашей задачи.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="section reveal" id="contact" style="border-top: none; padding-top: 24px;">
+            <div class="contact-panel">
+                <p class="eyebrow">Свяжитесь со мной</p>
+                <h2>Обсудим ваш запрос</h2>
+                <p>Отвечу в течение рабочего дня — по почте или в Max.</p>
+                <div class="contact-actions">
+                    <a class="btn-cream" href="mailto:Anastasiya.Zaytseva2@rt.ru">📧 Anastasiya.Zaytseva2@rt.ru</a>
+                    <a class="btn-glass" href="tel:+79166481970">📞 +7 916 648-19-70</a>
+                    <a class="btn-glass" href="https://max.ru/u/f9LHodD0cOLRjIM3LQtgwOl5oye13zvUnSHDrBCBGdh8maUzY6DyMWRFV_g" target="_blank" rel="noopener">💬 Написать в Max</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        Анастасия Сухар · Бизнес-партнёр по персоналу · РТК ИТ
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script>
+        // Появление секций при прокрутке
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Тап по карточкам направлений на мобильных
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const active = document.querySelector('.service-card.touch-active');
+                if (active && active !== this) active.classList.remove('touch-active');
+                this.classList.toggle('touch-active');
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.service-card')) {
+                document.querySelectorAll('.service-card.touch-active').forEach(c => c.classList.remove('touch-active'));
+            }
+        });
+
+        // Wow-эффекты: световое пятно за курсором + 3D-наклон карточек (только с мышью)
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.querySelectorAll('.glass-card, .service-card, .process-card, .scope-item').forEach(function (card) {
+                var spot = document.createElement('span');
+                spot.className = 'spot';
+                card.prepend(spot);
+
+                var canTilt = !card.classList.contains('scope-item');
+                if (canTilt) card.classList.add('tilt-live');
+
+                card.addEventListener('mousemove', function (e) {
+                    var r = card.getBoundingClientRect();
+                    var x = e.clientX - r.left;
+                    var y = e.clientY - r.top;
+                    spot.style.setProperty('--mx', x + 'px');
+                    spot.style.setProperty('--my', y + 'px');
+
+                    if (!canTilt) return;
+                    var px = x / r.width - 0.5;
+                    var py = y / r.height - 0.5;
+                    card.style.transform = 'translateY(-6px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 7).toFixed(2) + 'deg)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    card.style.transform = '';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
